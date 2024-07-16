@@ -1,0 +1,29 @@
+services:
+  web:
+    image: cr.yandex/crpcrc44brrvk0pn95fj/hw:1.0.0
+    environment:
+      MYSQL_DATABASE=${MYSQL_DATABASE}
+      MYSQL_USER=${MYSQL_USER}
+      MYSQL_PASSWORD=${MYSQL_PASSWORD}
+    networks:
+      backend:
+        ipv4_address: 172.20.0.5
+    restart: always
+
+  db:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE=${MYSQL_DATABASE}
+      MYSQL_USER=${MYSQL_USER}
+      MYSQL_PASSWORD=${MYSQL_PASSWORD}
+    networks:
+      backend:
+        ipv4_address: 172.20.0.10
+    restart: on-failure
+
+networks:
+  backend:
+    driver: bridge
+    config:
+      - subnet: "172.20.0.0/24"
