@@ -25,7 +25,7 @@ services:
       - MYSQL_USER=${MYSQL_USER}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
     volumes:
-      - /opt/backup:/var/lib/mysql
+      - /opt/db:/var/lib/mysql
     networks:
       backend:
         ipv4_address: 172.20.0.10
