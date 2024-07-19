@@ -52,7 +52,7 @@ services:
   backup:
     image: busybox
     volumes:
-      - ./opt/backup:/backup
+      - ../backup:/backup
 
 volumes:
   db_data:
