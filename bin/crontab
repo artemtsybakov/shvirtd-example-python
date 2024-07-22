@@ -1,2 +1,0 @@
-#minute hour    day     month   week    command
-0-59       0       *       *       *       /usr/local/bin/backup
