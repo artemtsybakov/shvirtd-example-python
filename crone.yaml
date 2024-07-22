@@ -1,3 +1,5 @@
+version: '2'
+services:
   cron:
     image: schnitzler/mysqldump
     restart: always
@@ -15,8 +17,7 @@
     networks:
       backend:
         ipv4_address: 172.20.0.7
-
   backup:
-    image: busybox
-    volumes:
-      - ./backup:/backup
+   image: busybox
+   volumes:
+     - ./backup:/backup
