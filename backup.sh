@@ -1,6 +1,7 @@
 docker run \
-    --rm --env-file env.list \
+    --network=opt_backend \
+    --rm --env-file /opt/env.list \
     -v `pwd`/backup:/backup \
-    --link="mysql:alias" \
+    --link="opt-db-1:alias" \
     schnitzler/mysqldump \
     mysqldump --opt -h alias -u ${MYSQL_USER} -p${MYSQL_PASSWORD} "--result-file=/backup/dumps.sql" ${MYSQL_DATABASE}
