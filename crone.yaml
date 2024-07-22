@@ -19,4 +19,4 @@
   backup:
     image: busybox
     volumes:
-      - /backup:/backup
+      - ./backup:/backup
