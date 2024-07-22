@@ -1,8 +1,8 @@
 include:
   - proxy.yaml
+  - crone.yaml
 
 services:
-
   web:
     build:
       context: .
@@ -30,29 +30,6 @@ services:
       backend:
         ipv4_address: 172.20.0.10
     restart: on-failure
-
-  cron:
-    image: schnitzler/mysqldump
-    restart: always
-    volumes:
-      - ./bin/crontab:/var/spool/cron/crontabs/root
-      - ./bin/backup:/usr/local/bin/backup
-    volumes_from:
-      - backup
-    command: ["-l", "8", "-d", "8"]
-    environment:
-      MYSQL_HOST: db
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-    networks:
-      backend:
-        ipv4_address: 172.20.0.7
-
-  backup:
-    image: busybox
-    volumes:
-      - ../backup:/backup
 
 volumes:
   db_data:
