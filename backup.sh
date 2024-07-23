@@ -1,6 +1,6 @@
-docker run \
+sudo docker run -it \
     --network=opt_backend \
-    --rm --env-file /opt/env.list \
+    --env-file /opt/env.list \
     -v `pwd`/backup:/backup \
     --link="opt-db-1:alias" \
     schnitzler/mysqldump \
